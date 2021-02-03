@@ -3,7 +3,7 @@ package kz.iitu.assihnment1.demo;
 import java.util.List;
 import java.util.Scanner;
 
-public class ATM extends Bank {
+public class ATM {
     private Bank bank;
     private BankServices services;
 
