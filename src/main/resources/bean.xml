@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="account1" class="kz.iitu.assihnment1.demo.Account">
+        <constructor-arg name="id" value="1"></constructor-arg>
+        <constructor-arg name="fullName" value="Aray"></constructor-arg>
+        <constructor-arg name="cardNumber" value="1111222233334444"></constructor-arg>
+        <constructor-arg name="pin" value="1234"></constructor-arg>
+        <constructor-arg name="balance" value="10000"></constructor-arg>
+    </bean>
+
+    <bean id="account2" class="kz.iitu.assihnment1.demo.Account">
+        <constructor-arg name="id" value="2"></constructor-arg>
+        <constructor-arg name="fullName" value="SomeOne"></constructor-arg>
+        <constructor-arg name="cardNumber" value="5555666677778888"></constructor-arg>
+        <constructor-arg name="pin" value="5678"></constructor-arg>
+        <constructor-arg name="balance" value="10000"></constructor-arg>
+    </bean>
+
+    <bean id="account3" class="kz.iitu.assihnment1.demo.Account">
+        <constructor-arg name="id" value="3"></constructor-arg>
+        <constructor-arg name="fullName" value="Adilet"></constructor-arg>
+        <constructor-arg name="cardNumber" value="1234123412341234"></constructor-arg>
+        <constructor-arg name="pin" value="1122"></constructor-arg>
+        <constructor-arg name="balance" value="10000"></constructor-arg>
+    </bean>
+
+    <bean id="bank" class="kz.iitu.assihnment1.demo.Bank">
+        <property name="name" value="SomeBank"></property>
+        <property name = "listOfAccounts">
+            <list>
+                <ref bean = "account1"/>
+                <ref bean = "account2"/>
+                <ref bean = "account3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="bankServices" class="kz.iitu.assihnment1.demo.BankServices"></bean>
+
+    <bean id="atm" class="kz.iitu.assihnment1.demo.ATM">
+        <property name="bank" ref="bank"></property>
+        <property name="services" ref="bankServices"></property>
+    </bean>
+</beans>
