@@ -25,8 +25,10 @@ public class ATM {
         List<Account> accounts=bank.getListOfAccounts();
         Scanner sc=new Scanner(System.in);
         System.out.println("Choose card number to get access:");
+        int i=1;
         for (Account a : accounts) {
-            System.out.println(a.getId()+") "+a.getCardNumber());
+            System.out.println(i+") "+a.getCardNumber());
+            i++;
         }
         return accounts.get(sc.nextInt()-1);
 

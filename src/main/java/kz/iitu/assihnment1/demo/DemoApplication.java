@@ -5,17 +5,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 @SpringBootApplication
 public class DemoApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+
 		SpringApplication.run(DemoApplication.class, args);
 		Scanner sc= new Scanner(System.in);
 		ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 
 		ATM atm = context.getBean("atm", ATM.class);
+
 		Account account = atm.chooseAccount();
 
 		System.out.println("Enter pin: ");
@@ -29,6 +32,7 @@ public class DemoApplication {
 		}else{
 			System.out.println("Error. Wrong credentials!");;
 		}
+		((ClassPathXmlApplicationContext) context).close();
 	}
 
 }

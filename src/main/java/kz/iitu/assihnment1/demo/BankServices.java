@@ -14,7 +14,9 @@ public class BankServices {
             account.setBalance(account.getBalance()-amount);
             System.out.println("WithDraw: " + amount + ", remaining money on the card: " + account.getBalance());
         }
-        System.out.println("You don't have enough money!");
+        else{
+            System.out.println("You don't have enough money!");
+        }
     }
 
     public void topUp(Account account, double amount){
