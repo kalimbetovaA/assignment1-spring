@@ -6,21 +6,21 @@
 
     <context:annotation-config></context:annotation-config>
 
-    <bean id="db" class="kz.iitu.assihnment1.demo.DBConnection">
+    <bean id="db" class="kz.iitu.assihnment1.demo.DBConnection" scope = "singleton">
         <constructor-arg name="driver" value="com.mysql.cj.jdbc.Driver"></constructor-arg>
         <constructor-arg name="dbUrl" value="jdbc:mysql://localhost/mydb"></constructor-arg>
         <constructor-arg name="user" value="root"></constructor-arg>
         <constructor-arg name="password" value="root"></constructor-arg>
     </bean>
 
-    <bean id="bank" class="kz.iitu.assihnment1.demo.Bank">
+    <bean id="bank" class="kz.iitu.assihnment1.demo.Bank" scope = "singleton">
         <property name="name" value="SomeBank"></property>
         <property name="db" ref="db"></property>
     </bean>
 
-    <bean id="bankServices" class="kz.iitu.assihnment1.demo.BankServices"></bean>
+    <bean id="bankServices" class="kz.iitu.assihnment1.demo.BankServices" scope = "singleton"></bean>
 
-    <bean id="atm" class="kz.iitu.assihnment1.demo.ATM">
+    <bean id="atm" class="kz.iitu.assihnment1.demo.ATM" scope = "singleton">
         <property name="bank" ref="bank"></property>
         <property name="services" ref="bankServices"></property>
     </bean>

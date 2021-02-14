@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class DemoApplication {
 
 	public static void main(String[] args) throws SQLException {
-
 		SpringApplication.run(DemoApplication.class, args);
+
 		Scanner sc= new Scanner(System.in);
 		ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 
