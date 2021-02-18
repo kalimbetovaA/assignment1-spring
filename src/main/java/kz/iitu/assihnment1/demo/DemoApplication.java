@@ -3,19 +3,20 @@ package kz.iitu.assihnment1.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
-@SpringBootApplication
 public class DemoApplication {
 
-	public static void main(String[] args) throws SQLException {
-		SpringApplication.run(DemoApplication.class, args);
+	public static void main(String[] args){
 
+
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.scan("kz.iitu.assihnment1.demo");
+        context.refresh();
 		Scanner sc= new Scanner(System.in);
-		ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 
 		ATM atm = context.getBean("atm", ATM.class);
 
@@ -32,7 +33,8 @@ public class DemoApplication {
 		}else{
 			System.out.println("Error. Wrong credentials!");;
 		}
-		((ClassPathXmlApplicationContext) context).close();
+
+		context.close();
 	}
 
 }

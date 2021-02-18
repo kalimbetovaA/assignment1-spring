@@ -1,14 +1,19 @@
 package kz.iitu.assihnment1.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Scanner;
 
+@Component("atm")
 public class ATM {
     private Bank bank;
     private BankServices services;
 
     public ATM(){}
 
+    @Autowired
     public ATM(Bank bank, BankServices services) {
         this.bank = bank;
         this.services = services;

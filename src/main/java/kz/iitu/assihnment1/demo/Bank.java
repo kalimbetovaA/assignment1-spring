@@ -1,13 +1,18 @@
 package kz.iitu.assihnment1.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("bank")
 public class Bank {
+    @Value("${bank.name}")
     private String name;
-    private List<Account> listOfAccounts;
     private DBConnection db;
 
     public Bank(){
@@ -17,7 +22,7 @@ public class Bank {
         this.name = name;
     }
 
-
+    @Autowired
     public void setDb(DBConnection db) {
         this.db = db;
     }
@@ -27,7 +32,7 @@ public class Bank {
     }
 
     public List<Account> getListOfAccounts(){
-        listOfAccounts=new ArrayList<Account>();
+        List<Account> listOfAccounts=new ArrayList<Account>();
         String sql="SELECT * FROM accounts";
         try {
             ResultSet rs = db.execSQL(sql);

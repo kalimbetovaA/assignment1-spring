@@ -1,5 +1,8 @@
 package kz.iitu.assihnment1.demo;
 
+import org.springframework.stereotype.Component;
+
+@Component("services")
 public class BankServices {
 
     public BankServices() {
